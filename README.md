@@ -1,1 +1,1 @@
-Practice on algorithms problems and common questions for knowledge consolidation
+Practice and personal notes about algorithms problems and common questions for knowledge consolidation
