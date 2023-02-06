@@ -45,9 +45,6 @@ function stringify(data) {
       }
       return `${acc},"${key}":${stringify(value)}`
     }, '')
-    // for (key of Object.keys(data)) {
-    //   result += `,"${key}":${stringify(data[key])}`
-    // }
     return '{' + result.slice(1) + '}'
   }
   return undefined
