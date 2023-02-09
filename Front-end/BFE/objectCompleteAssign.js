@@ -32,6 +32,7 @@ const source = Object.create(
         this._e = value
       },
       enumerable: true
+      
     }
   }
 )
