@@ -25,6 +25,7 @@ function all(promises) {
         countPending--
         if (countPending === 0) {
           resolve(result)
+          return
         }
       }, reject)
     })
