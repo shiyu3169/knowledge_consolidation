@@ -28,4 +28,3 @@ function bubbleSort(array) {
 
   return array
 }
-a
