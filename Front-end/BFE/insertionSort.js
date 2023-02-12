@@ -19,3 +19,5 @@ function insertionSort(array) {
     array[j + 1] = current
   }
 }
+
+insertionSort([4, 2, 100, 99, 10000, -1, 99, 2])
