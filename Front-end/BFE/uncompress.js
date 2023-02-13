@@ -33,5 +33,3 @@ function uncompress(str) {
 
   return stack.join('')
 }
-
-uncompress('3(ab2(c))')
