@@ -19,13 +19,13 @@ onced(2)
  * @return {Function}
  */
 function once(func) {
-  const map = new Map()
+  let called = false
+  let result
   return function (...args) {
-    if (map.has(func)) {
-      return map.get(func)
+    if (!called) {
+      result = func.call(this, ...args)
+      called = true
     }
-    const result = func.call(this, ...args)
-    map.set(func, result)
     return result
   }
 }
