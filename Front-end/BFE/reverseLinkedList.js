@@ -44,14 +44,20 @@ const reverseLinkedList = (list) => {
   //     list = next
   // }
   // return prev
-  if (!list) return
-  function reverse(list, prev) {
-    const curNext = list.next
-    list.next = prev
-    if (curNext) {
-      return reverse(curNext, list)
-    }
-    return list
+  // if (!list) return
+  // function reverse(list, prev) {
+  //   const curNext = list.next
+  //   list.next = prev
+  //   if (curNext) {
+  //     return reverse(curNext, list)
+  //   }
+  //   return list
+  // }
+  // return reverse(list)
+  let node = list,
+    prev = null
+  while (node !== null) {
+    ;[node.next, node, prev] = [prev, node.next, node]
   }
-  return reverse(list)
+  return prev
 }
