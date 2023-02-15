@@ -133,7 +133,7 @@ class MyPromise {
     const result = []
     let completedPromises = 0
     return new MyPromise((resolve, reject) => {
-      for (let i = 0; i < completedPromises.length; i++) {
+      for (let i = 0; i < promise.length; i++) {
         const promise = promises[i]
         promise
           .then((value) => {
@@ -147,7 +147,51 @@ class MyPromise {
       }
     })
   }
-  static allSettled(promise) {}
+  static allSettled(promises) {
+    const result = []
+    completedPromises
+    return new MyPromise((resolve) => {
+      for (let i = 0; i < promises.length; i++) {
+        const promise = promises[i]
+        promise
+          .then((value) => {
+            results[i] = { status: STATE.FULFILLED, value }
+          })
+          .catch((reason) => {
+            results[i] = { status: STATE.REJECTED, reason }
+          })
+          .finally(() => {
+            completedPromises++
+            if (completedPromises === promises.length) {
+              resolve(results)
+            }
+          })
+      }
+    })
+  }
+  static race(promises) {
+    return new MyPromise((resolve, reject) => {
+      promises.forEach((promise) => {
+        promise.then(resolve).catch(reject)
+      })
+    })
+  }
+  static any(promises) {
+    const errors = []
+    let rejectedPromises = 0
+    return new MyPromise((resolve, reject) => {
+      for (let i = 0; i < promise.length; i++) {
+        const promise = promises[i]
+        promise.then(resolve).catch((value) => {
+          rejectedPromises++
+          errors[i] = value
+          if (rejectedPromises === promises.length) {
+            reject(new AggregateError(errors, 'All promises were rejected'))
+          }
+        })
+      }
+    })
+  }
 }
 
 class UncaughtPromiseError extends Error {
