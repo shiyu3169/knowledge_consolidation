@@ -37,30 +37,37 @@ class MyPromise {
   }
 
   #onSuccess(value) {
-    if (this.#state !== STATE.PENDING) return
+    queueMicrotask(() => {
+      if (this.#state !== STATE.PENDING) return
 
-    if (value instanceof MyPromise) {
-      value.then(this.#onSuccessBind, this.#onFailBind)
-      return
-    }
+      if (value instanceof MyPromise) {
+        value.then(this.#onSuccessBind, this.#onFailBind)
+        return
+      }
 
-    this.#value = value
-    this.#state = STATE.FULFILLED
-    this.#runCallbacks()
+      this.#value = value
+      this.#state = STATE.FULFILLED
+      this.#runCallbacks()
+    })
   }
 
   #onFail(value) {
-    setTimeout(() => {}, 0)
-    if (this.#state !== STATE.PENDING) return
+    queueMicrotask(() => {
+      if (this.#state !== STATE.PENDING) return
 
-    if (value instanceof MyPromise) {
-      value.then(this.#onSuccessBind, this.#onFailBind)
-      return
-    }
+      if (value instanceof MyPromise) {
+        value.then(this.#onSuccessBind, this.#onFailBind)
+        return
+      }
 
-    this.#value = value
-    this.#state = STATE.REJECTED
-    this.#runCallbacks()
+      if (this.#catchCbs.length === 0) {
+        throw new UncaughtPromiseError(value)
+      }
+
+      this.#value = value
+      this.#state = STATE.REJECTED
+      this.#runCallbacks()
+    })
   }
 
   then(catchCb, thenCb) {
@@ -94,10 +101,60 @@ class MyPromise {
   }
 
   catch(cb) {
-    this.then(undefined, cb)
+    return this.then(undefined, cb)
   }
 
-  finally(cb) {}
+  finally(cb) {
+    return this.then(
+      (result) => {
+        cb()
+        return result
+      },
+      (result) => {
+        cb()
+        throw result
+      },
+    )
+  }
+
+  static resolve(value) {
+    return new Promise((resolve) => {
+      resolve(value)
+    })
+  }
+
+  static reject(value) {
+    return new Promise((_, reject) => {
+      reject(value)
+    })
+  }
+
+  static all(promise) {
+    const result = []
+    let completedPromises = 0
+    return new MyPromise((resolve, reject) => {
+      for (let i = 0; i < completedPromises.length; i++) {
+        const promise = promises[i]
+        promise
+          .then((value) => {
+            completedPromises++
+            result[i] = value
+            if (completedPromises === promises.length) {
+              resolve(results)
+            }
+          })
+          .catch(reject)
+      }
+    })
+  }
+  static allSettled(promise) {}
+}
+
+class UncaughtPromiseError extends Error {
+  constructor(error) {
+    super(error)
+    this.stack = `(in promise) ${error.stack}`
+  }
 }
 
 module.exports = MyPromise
