@@ -18,7 +18,7 @@ Don't use BigInt directly, it is not our goal here */
 function subtract(num1, num2) {
   // your code here
   let result = ''
-  const length = Math.max(num1.length, num2.length)
+
   let borrow = 0
   let i = num1.length - 1
   let j = num2.length - 1
