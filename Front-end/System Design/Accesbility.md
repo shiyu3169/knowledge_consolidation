@@ -5,7 +5,7 @@
 ## 3. Hot keys
 Navigation
 
-## 4. use rems in app to provide the consistent experience
+## 4. use rems instead of pixels in app to provide the consistent experience
 
 ## 5. Add input fields with aria-live attribute
 "aria-live" is an ARIA (Accessible Rich Internet Applications) attribute that can be added to HTML elements to improve the accessibility of web content for users with disabilities, particularly those using screen readers.

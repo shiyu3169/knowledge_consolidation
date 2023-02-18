@@ -1,5 +1,5 @@
 ## Network Performance
-### 1. Gzip resources
+### 1. Gzip & Brotli resources
 ### 2. http 2 multiplexing
 HTTP/2 introduced a feature called "multiplexing," which allows multiple HTTP requests to be sent and received at the same time over a single TCP connection. This is in contrast to HTTP/1, where each request and response had to wait for the previous one to complete before starting.
 
@@ -45,6 +45,19 @@ Based on flow
 ### 1. SSR if needed
 
 ### 2. Inline critical js and css
+Inlining critical CSS and JS can be a good strategy for improving website performance, especially for the initial page load. Here's why:
+
+When you inline critical CSS and JS, you are essentially putting that code directly in the HTML file, rather than linking to a separate CSS or JS file. This means that the browser can download and render the critical resources as part of the initial HTML document, without having to wait for a separate network request to complete. This can reduce the overall time it takes for the page to become interactive and improve the user experience.
+
+That being said, there are some downsides to inlining critical resources. Inlining code can increase the size of the HTML file, which can slow down the initial load time, especially on slower network connections. Additionally, inlining can make the HTML file more difficult to read and maintain.
+
+Therefore, it's important to strike a balance between inlining critical resources and keeping the HTML file size manageable. Some techniques for achieving this balance include:
+
+Using server-side rendering to generate HTML with inlined critical resources
+Using HTTP/2 to reduce the overhead of multiple network requests
+Minifying HTML, CSS, and JS to reduce file size
+Using lazy loading to defer non-critical resources until they are needed
+Overall, inlining critical CSS and JS can be a good performance optimization technique, but it should be used carefully and in conjunction with other techniques to achieve the best possible user experience.
 
 ### 3. Load non-critical stuff later
 analytics scripts, utility js code, additional styles
