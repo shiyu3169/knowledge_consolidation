@@ -1,6 +1,14 @@
 ## Network Performance
-### 1. Gzip & Brotli resources
-### 2. http 2 multiplexing
+### Minify CSS / js
+### Gzip & Brotli resources
+
+### CDN (if component)
+Serve package on CDN
+
+### ES5 / ES6 (if component)
+
+
+### http 2 multiplexing (If design whole app)
 HTTP/2 introduced a feature called "multiplexing," which allows multiple HTTP requests to be sent and received at the same time over a single TCP connection. This is in contrast to HTTP/1, where each request and response had to wait for the previous one to complete before starting.
 
 With HTTP/2 multiplexing, a single connection can support multiple streams of data simultaneously, which can improve the overall performance of web applications by reducing the latency and overhead associated with setting up multiple connections. This can be especially beneficial for websites that make use of many small assets, such as images or CSS files, as the multiplexing capability can reduce the number of round trips needed to download all of the assets.
