@@ -1,6 +1,6 @@
 /* https://bigfrontend.dev/problem/Next-Right-Sibiling*/
 /*
-Approach 1
+Approach 1 BFS
 The time complexity of the nextRightSibling function is O(n), where n is the total number of nodes in the tree.
 
 In the worst case, the function will need to traverse all nodes in the tree to find the target node. 
