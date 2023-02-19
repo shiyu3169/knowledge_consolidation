@@ -1,4 +1,4 @@
-/* https://bigfrontend.dev/problem/write-your-own-instanceof */
+/* https://bigfrontend.dev/problem/write-your-own-instanceof` */
 /**
  * @param {object} obj
  * @param {object} target
