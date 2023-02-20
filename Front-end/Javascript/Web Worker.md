@@ -5,4 +5,4 @@ Web workers run in a separate thread, which means they can execute code in paral
 
 Web workers communicate with the main thread by sending and receiving messages. This messaging system ensures that the data is passed between the two threads in a safe and controlled way. Web workers can be created using the JavaScript `Worker` API, which allows developers to spawn new threads and pass scripts to be executed in the background.
 
-[Video explaination](https://www.youtube.com/watch?v=Gcp7triXFjg)
+[Video Example](https://www.youtube.com/watch?v=Gcp7triXFjg)
