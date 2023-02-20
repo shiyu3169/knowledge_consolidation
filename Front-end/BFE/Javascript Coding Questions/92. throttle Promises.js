@@ -7,23 +7,36 @@
 function throttlePromises(funcs, max) {
   return new Promise((resolve, reject) => {
     let concurrentCount = 0
-    let funcIndex = -1
+    let curFuncIndex = -1
+    let resultCount = 0
     const result = []
-    const fetchNext = () => {
-      funcIndex += 1
-      concurrentCount += 1
 
-      funcs[funcIndex]().then(
+    const fetchNext = () => {
+      const nextFuncIndex = curFuncIndex + 1
+      if (nextFuncIndex === funcs.length) {
+        return
+      }
+
+      const next = funcs[nextFuncIndex]
+
+      concurrentCount += 1
+      curFuncIndex += 1
+
+      next().then(
         (data) => {
-          result[funcIndex] = data
+          result[nextFuncIndex] = data
+          resultCount += 1
           concurrentCount -= 1
-          if (result.length === funcs.length) {
+
+          if (funcs.length === resultCount) {
             resolve(result)
             return
           }
+          fetchNext()
         },
         (err) => {
           reject(err)
+          return
         },
       )
 
@@ -31,6 +44,9 @@ function throttlePromises(funcs, max) {
         fetchNext()
       }
     }
+
     fetchNext()
   })
 }
+
+/* The index and counters are tricky here. You need to keep track them because they are used in then */
