@@ -1,24 +1,3 @@
-/**
- * @param {(path: string, config: any) => Promise<any>} getAPI
- * @returns {(path: string, config: any) => Promise<any> & {clearCache: () => void}}
- */
-// function createGetAPIWithMerging(getAPI) {
-//   // serialize the hash with path + config
-
-//   const cache = new Map()
-//   function getAPIWithMerging(path, config) {
-//     const key = hash({path, config})
-//     if(cache.has(key) && Date.now() - cache.get(key).dateCreated <= 1000) {
-//       return cache.get(key).data
-//     } else {
-//       return getAPI
-//     }
-//   }
-//   getAPIWithMerging.clearCache = cache.clear
-
-//   return getAPIWithMerging
-// }
-
 const MAX_CACHE_ENTRIES_ALLOWED = 5
 const CACHE_TIME_LIMIT = 1000
 /**
