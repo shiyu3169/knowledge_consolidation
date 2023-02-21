@@ -20,6 +20,7 @@
 // }
 
 const MAX_CACHE_ENTRIES_ALLOWED = 5
+const CACHE_TIME_LIMIT = 1000
 /**
  * @param {(path: string, config: any) => Promise<any>} getAPI
  * @returns {(path: string, config: any) => Promise<any> & {clearCache: () => void}}
@@ -32,7 +33,7 @@ function createGetAPIWithMerging(getAPI) {
 
     if (cache.has(key)) {
       const entry = cache.get(key)
-      if (timestamp - entry.timestamp <= 1000) {
+      if (timestamp - entry.timestamp <= CACHE_TIME_LIMIT) {
         return entry.promise
       }
     }
@@ -53,15 +54,6 @@ function createGetAPIWithMerging(getAPI) {
 
 function generateKey(obj) {
   switch (Object.prototype.toString.call(obj)) {
-    case '[object Undefined]':
-      return 'undefined'
-    case '[object null]':
-      return 'null'
-    case '[object Number]':
-    case '[object Boolean]':
-      return obj.toString()
-    case '[object String]':
-      return obj
     case '[object Object]':
     case '[object Array]':
       const keys = Object.keys(obj)
@@ -69,5 +61,7 @@ function generateKey(obj) {
       return keys.reduce((acc, cur) => {
         return acc + `${cur}:${generateKey(obj[cur])}`
       }, '')
+    default:
+      return obj
   }
 }
