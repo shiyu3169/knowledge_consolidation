@@ -1,0 +1,1 @@
+By default, when your component’s state or props change, your component will re-render
