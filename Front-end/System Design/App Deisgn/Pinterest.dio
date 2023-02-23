@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="5Gh_HYYGhOjOefmV5HHh" name="Page-1">
-        <mxGraphModel dx="1431" dy="828" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="1349" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -815,6 +815,12 @@
                 </mxCell>
                 <mxCell id="364" value="Application Cache" style="whiteSpace=wrap;html=1;strokeColor=default;fontSize=12;fillColor=default;" vertex="1" parent="1">
                     <mxGeometry x="3180" y="800" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="366" value="Accessibility" style="text;strokeColor=none;fillColor=none;html=1;fontSize=24;fontStyle=1;verticalAlign=middle;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="2800" y="1295" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="367" value="&lt;ol&gt;&lt;li&gt;Keyboard navigation&lt;/li&gt;&lt;ul&gt;&lt;li&gt;adding pin&lt;/li&gt;&lt;li&gt;go top&lt;/li&gt;&lt;li&gt;go bottom&lt;/li&gt;&lt;li&gt;share pin&lt;/li&gt;&lt;li&gt;next pin&lt;/li&gt;&lt;li&gt;open detail&lt;/li&gt;&lt;li&gt;help&lt;/li&gt;&lt;/ul&gt;&lt;li&gt;color theming&lt;/li&gt;&lt;ul&gt;&lt;li&gt;color blindness&lt;/li&gt;&lt;li&gt;dark mode&lt;/li&gt;&lt;/ul&gt;&lt;li&gt;aria attribute&lt;/li&gt;&lt;ul&gt;&lt;li&gt;aria-live&lt;/li&gt;&lt;li&gt;screen reader&lt;/li&gt;&lt;/ul&gt;&lt;li&gt;Use rem instead px&lt;/li&gt;&lt;/ol&gt;" style="text;html=1;align=left;verticalAlign=top;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=12;" vertex="1" parent="1">
+                    <mxGeometry x="2750" y="1335" width="180" height="340" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
