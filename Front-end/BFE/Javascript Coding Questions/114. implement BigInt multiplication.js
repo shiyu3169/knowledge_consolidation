@@ -20,7 +20,7 @@ function multiply(a, b) {
     numB = numB.slice(1)
   }
 
-  let result = new Array(numA.length + numB.length).fill(0)
+  const result = new Array(numA.length + numB.length).fill(0)
 
   for (let i = numA.length - 1; i >= 0; i--) {
     for (let j = numB.length - 1; j >= 0; j--) {
