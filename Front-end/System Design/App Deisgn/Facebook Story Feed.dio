@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="7ErhfmK3UT99HPBbZALs" name="Page-1">
-        <mxGraphModel dx="1137" dy="1360" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="549" dy="657" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -331,10 +331,10 @@
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="158" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;flipH=1;labelPosition=right;verticalLabelPosition=middle;align=left;verticalAlign=middle;shadow=0;glass=0;labelBackgroundColor=none;labelBorderColor=none;sketch=0;fillColor=default;" parent="144" vertex="1">
-                    <mxGeometry x="270" y="195" width="70" height="240" as="geometry"/>
+                    <mxGeometry x="290" y="195" width="52" height="240" as="geometry"/>
                 </mxCell>
                 <mxCell id="159" value="Sliding Window (1-10)" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="144" vertex="1">
-                    <mxGeometry x="340" y="295" width="140" height="30" as="geometry"/>
+                    <mxGeometry x="342" y="300" width="140" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="160" value="Intersection Observver API" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="144" vertex="1">
                     <mxGeometry x="310" y="155" width="170" height="30" as="geometry"/>
