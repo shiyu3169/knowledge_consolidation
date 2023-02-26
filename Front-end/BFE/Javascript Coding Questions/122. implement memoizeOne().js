@@ -5,22 +5,18 @@
  */
 
 function memoizeOne(func, isEqual) {
-  const cache = new Map()
+  const cache = {}
   return function (...args) {
-    console.log(this)
-    if (cache.has(func)) {
-      const argCache = cache.get(func)
+    if (cache.args) {
       const cached = isEqual
-        ? isEqual(argCache.args, [...args])
-        : JSON.stringify(argCache.args) === JSON.stringify([...args])
-      if (cached && this === argCache.self) return argCache.data
+        ? isEqual(cache.args, args)
+        : JSON.stringify(cache.args) === JSON.stringify(args)
+      if (cached && this === cache.self) return cache.data
     }
     const result = func.call(this, ...args)
-    cache.set(func, {
-      self: this,
-      args: [...args],
-      data: result,
-    })
+    cache.self = this
+    cache.args = args
+    cache.data = result
     return result
   }
 }
