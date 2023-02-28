@@ -6,7 +6,7 @@ window.myLocalStorage = {
         this.removeItem(key)
         return null
       }
-      return entry.value
+      return entry.value.toString()
     } catch (e) {
       return null
     }
