@@ -1,6 +1,0 @@
-- GraphQL 
-- Video APIs and Encrypted Media Extensions for DRM content
-- HLS vs MPEG-DASH for streaming, not all CDNs support streaming content
-- monitoring (e.g. Sentry, Datadog)
-- A/B experimentation (Optimizely)
-- localization
