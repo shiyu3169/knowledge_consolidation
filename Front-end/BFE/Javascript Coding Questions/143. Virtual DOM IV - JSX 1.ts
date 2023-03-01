@@ -1,5 +1,3 @@
-
-
 type JSXOpeningElement = {
   tag: string
 }
@@ -10,7 +8,7 @@ type JSXClosingElement = {
 
 type JSXChildren = string[]
 
-type JSXElement= {
+type JSXElement = {
   openingElement: JSXOpeningElement
   children: JSXChildren
   closingElement: JSXClosingElement
@@ -31,7 +29,7 @@ type JSXElement= {
 //       }
 //     }
 //     if(element.openingElement.tag === element.closingElement.tag) return element
-//   } 
+//   }
 //   throw new Error("error")
 // }
 
@@ -47,20 +45,20 @@ function parse(code: string): JSXElement {
   // expect name has no <,>,/
   // expect >
 
-  // collect children until find < 
+  // collect children until find <
 
   // expect closing tag to start with <
   // next non-space char to be /
   // expect name has no <,>,/
   // expect >
   let index = 0
-  const goToNext =() => {
+  const goToNext = () => {
     index += 1
   }
 
   const goUntil = (reg: RegExp) => {
     const start = index
-    while(index < code.length && !reg.test(code[index])) {
+    while (index < code.length && !reg.test(code[index])) {
       index += 1
     }
     return code.slice(start, index)
@@ -69,60 +67,59 @@ function parse(code: string): JSXElement {
   const goUntilNonWhiteSpace = () => goUntil(/\S/)
 
   const expect = (char: string) => {
-    if(code[index] !== char) {
-      throw new Error("unexpected char")
+    if (code[index] !== char) {
+      throw new Error('unexpected char')
     }
   }
 
-  const parseOpeningElements = ():JSXOpeningElement => {
+  const parseOpeningElements = (): JSXOpeningElement => {
     goUntilNonWhiteSpace()
-    expect("<")
+    expect('<')
     goToNext()
     goUntilNonWhiteSpace()
     const tag = goUntil(/[^\w]/)
     goUntilNonWhiteSpace()
-    expect(">")
+    expect('>')
     goToNext()
     return {
-      tag
+      tag,
     }
   }
 
-  const parseChildren = ():JSXChildren => {
+  const parseChildren = (): JSXChildren => {
     const text = goUntil(/<|>/)
     return [text]
   }
 
-  const parseClosingElement = ():JSXClosingElement => {
-    expect("<")
+  const parseClosingElement = (): JSXClosingElement => {
+    expect('<')
     goToNext()
     goUntilNonWhiteSpace()
-    expect("/")
+    expect('/')
     goToNext()
     goUntilNonWhiteSpace()
     const tag = goUntil(/[^\w]/)
     goUntilNonWhiteSpace()
-    expect(">")
+    expect('>')
     goToNext()
     goUntilNonWhiteSpace()
-    if (index < code.length - 1) throw new Error ("invalid char at end")
+    if (index < code.length) throw new Error('invalid char at end')
     return {
-      tag
+      tag,
     }
   }
   const element = {
     openingElement: parseOpeningElements(),
     children: parseChildren(),
-    closingElement: parseClosingElement()
+    closingElement: parseClosingElement(),
   }
-  if (element.openingElement.tag !== element.closingElement.tag) throw new Error("tags are not match")
+  if (element.openingElement.tag !== element.closingElement.tag)
+    throw new Error('tags are not match')
   return element
 }
 
 function generate(ast: JSXElement): string {
-  const {openingElement, children, closingElement} = ast
+  const { openingElement, children, closingElement } = ast
   if (children[0]) return `h("${openingElement.tag}", null, "${children[0]}")`
   return `h("${closingElement.tag}", null)`
 }
-
-
