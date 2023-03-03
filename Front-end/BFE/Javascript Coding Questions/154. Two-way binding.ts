@@ -5,7 +5,4 @@ function model(state: { value: string }, element: HTMLInputElement) {
     get: () => element.value,
     set: (value) => (element.value = value),
   })
-  element.addEventListener('change', (event) => {
-    state.value = (event.target as HTMLInputElement).value
-  })
 }
