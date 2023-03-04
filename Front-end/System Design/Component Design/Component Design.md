@@ -5,12 +5,11 @@
 ## 5. Store Design
 ## 6. Optimization
 1. Network
-   1. Compress
-      1. Minify resources
+   1.  Minify resources
    2. Debounce
    3. Cache
    4. Loader, Placeholder, Skeleton, Error State
-   5. NPM Registry
+   5 . NPM Registry
 2. Render
    1. DOM
       1. Maintain constant number of nodes
