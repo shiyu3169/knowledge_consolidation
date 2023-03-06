@@ -1,7 +1,7 @@
 // This is a JavaScript coding problem from BFE.dev
 
 function generateSelector(root: HTMLElement, target: HTMLElement): string {
-  const path = []
+  const path: string[] = []
   let curNode = target
   while (curNode && curNode !== root) {
     path.push(
